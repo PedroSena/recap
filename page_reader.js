@@ -6,7 +6,8 @@ window.onload = function(){
 	page_content = page_content.replace("/ +(?= )|\n/g",'');
 	var message = {
 		url: document.location.href,
-		content: page_content
+		content: page_content,
+		type: 'insert'
 	}
 	chrome.extension.sendMessage(message);
 }
