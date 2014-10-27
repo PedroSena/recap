@@ -14,7 +14,6 @@ chrome.extension.onMessage.addListener(function(message, sender, sendResponse){
 	if (message.type == "query") {
 		db.transaction(function(tx){
 			var textToSearch = message.content.split(" ").join("%");
-			console.log("Searching for: " + textToSearch);
 			tx.executeSql("SELECT DISTINCT url, content FROM HISTORY where content like ? order by date DESC", 
 				["%" + textToSearch + "%"], function(tx,result){
 					var len = result.rows.length;
@@ -30,7 +29,6 @@ chrome.extension.onMessage.addListener(function(message, sender, sendResponse){
 						});
 					}
 					entries = _.uniq(entries, function(entry) { return entry.content });
-					console.log("# of entries: " + entries.length);
 					sendResponse({entries: entries});
 				}
 			);
