@@ -1,6 +1,11 @@
 .resultsContainer {
 	margin-top: 15px;
+	width: 400px;
 }
 .resultsContainer div {
 	margin-top: 10px;
+}
+
+.resultsContainer div:nth-child(odd) {
+   background-color: #ccc;
 }

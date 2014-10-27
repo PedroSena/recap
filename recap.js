@@ -12,8 +12,8 @@ window.onload = function(){
 				var entry = entries[i];
 				var template = $('#resultTemplate').clone().show();
 				template.find('.content')
-					.attr('src', entry.url)
-					.text(entry.content);
+					.attr('href', entry.url)
+					.text("..." + entry.content + "... | " + entry.url);	
 				$('.resultsContainer').append(template);
 			}
 		});
