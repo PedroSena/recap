@@ -1,5 +1,5 @@
 window.onload = function(){
-	document.getElementById('searchField').addEventListener('keyup', function(){
+	document.getElementById('searchField').addEventListener('keyup', _.debounce(function(){
 		var text = this.value;
 		var message = {
 			type: 'query',
@@ -8,33 +8,14 @@ window.onload = function(){
 		chrome.extension.sendMessage(message, function(results){
 			var entries = results.entries;
 			$('.resultsContainer').empty();
-			for ( var i = 0; i < Math.min(5,entries.length); i++ ) {
+			for ( var i = 0, limit = entries.length; i < limit; i++ ) {
 				var entry = entries[i];
 				var template = $('#resultTemplate').clone().show();
 				template.find('.content')
 					.attr('src', entry.url)
-					.text(getRelevantContent(entry.content, text));
+					.text(entry.content);
 				$('.resultsContainer').append(template);
 			}
 		});
-	}, false);
-
-	function getRelevantContent(allContent, keyword) {
-		var tokens = allContent.split(" ");
-		var indices = [];
-		for ( var i = 0; i < tokens.length; i++ ) {
-			var token = tokens[i];
-			if ( token == keyword ) {
-				indices.push(i);
-			}
-		}
-		var words = [];
-		for ( var i = 0; i < indices.length; i++ ) {
-			var index = indices[i];
-			for ( var j = -5; j < 6; j++ ) {
-				words.push(tokens[index+j]);	
-			}
-		}
-		return words.join(" ");
-	}
+	}, 1000), false);
 }

@@ -15,7 +15,7 @@
   },
 
   "background": {
-    "scripts": ["jquery-1.11.1.min.js","background.js"],
+    "scripts": ["jquery-1.11.1.min.js","lodash.min.js", "background.js"],
     "persistent": true
   },
 
