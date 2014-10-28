@@ -2,10 +2,19 @@
 	margin-top: 15px;
 	width: 400px;
 }
-.resultsContainer div {
+.resultsContainer > div {
 	margin-top: 10px;
 }
+.resultTemplate:nth-child(odd) {
+   background-color: #efefef;
+}
 
-.resultsContainer div:nth-child(odd) {
-   background-color: #ccc;
+.link {
+    font-size: 0.9em;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.title {
+    color: darkgreen;
 }
