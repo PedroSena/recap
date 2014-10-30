@@ -1,8 +1,8 @@
 {
   "name": "Recap",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "manifest_version": 2,
-  "description" : "Searches for text content in closed tabs",
+  "description" : "Search for text content in closed tabs",
   "icons": { "16": "icons/16x16.png", "48": "icons/48x48.png", "128": "icons/128x128.png" },
 
   "browser_action": {
